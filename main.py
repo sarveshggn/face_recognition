@@ -9,7 +9,7 @@ import onnxruntime
 # from scrfd import SCRFD
 # from arcface_onnx import ArcFaceONNX
 # from adaface_onnx import AdaFaceONNX
-from adaface_openvino import AdaFaceOpenVINO
+from fr.adaface_openvino import AdaFaceOpenVINO
 import json
 import heapq
 import faiss
@@ -21,18 +21,18 @@ import json
 import time
 # from scrfd_openvino_single_detect import SCRFD
 # from scrfd_openvino_custom import SCRFD
-from scrfd_openvino_sd_blur_detect import SCRFD
+from fd.scrfd_openvino_sd_blur_detect import SCRFD
 
 onnxruntime.set_default_logger_severity(3)
 
 assets_dir = osp.expanduser('buffalo_l')
 
 # detector = SCRFD(os.path.join(assets_dir, 'det_10g.onnx'))
-detector = SCRFD(os.path.join(assets_dir, './FD/model.xml'))
+detector = SCRFD(os.path.join(assets_dir, './FD/F32/model.xml'))
 # detector.prepare(0, blur_threshold=100)
 # model_path = os.path.join(assets_dir, 'w600k_r50.onnx')
 # rec = ArcFaceONNX(model_path)
-adaface_model_path = os.path.join(assets_dir, 'adaface_ir_50_model_fp16.xml')
+adaface_model_path = os.path.join(assets_dir, './Adaface/R50/F16/model.xml')
 # adaface_model_path = os.path.join(assets_dir, 'adaface_ir_50_model.onnx')
 # rec = AdaFaceONNX(adaface_model_path)
 rec = AdaFaceOpenVINO(adaface_model_path)
@@ -1100,7 +1100,7 @@ if __name__ == '__main__':
     st = time.time()
     # compare4(0.44)
     # compare_video('/Users/odms/Documents/aditya_ws/fr_code/classroom.gif', threshold=0.45)
-    compare_video_detailed('videos/input/39837-424360872_small.mp4', threshold=0.4, output_path='videos/output/39837-424360872_small_04_npu_wo_blur_200.mp4')
+    compare_video_detailed('videos/input/39837-424360872_small.mp4', threshold=0.4, output_path='videos/output/ov/39837-424360872_small_04_gpu_npu_blur_50_fp32_fp16.mp4')
     # compare_video_live_display('/Users/odms/Documents/aditya_ws/fr_code/videos/input/39837-424360872_small.mp4', threshold=0.45, output_path='/Users/odms/Documents/aditya_ws/fr_code/videos/output/output_video_walking_with_match_live_1920-1080_45.mp4')
     print(f"Time taken: {time.time() - st} seconds")
     # st2 = time.time()
