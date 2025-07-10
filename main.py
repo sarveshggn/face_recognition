@@ -64,7 +64,7 @@ def embed_image(args):
     return feat
 
 def go_through():
-    src_folder = "/Users/odms/Documents/aditya_ws/Photos"
+    src_folder = "/home/sr/Photos"
     photo_dirs = sorted([d for d in os.listdir(src_folder) if os.path.isdir(os.path.join(src_folder, d))])
     i = 0
     
@@ -107,7 +107,7 @@ def go_through():
 
 
 def compare4(threshold):
-    src_folder = "/Users/odms/Documents/aditya_ws/Photos"
+    src_folder = "/home/sr/Photos"
     photo_dirs = sorted([d for d in os.listdir(src_folder) if os.path.isdir(os.path.join(src_folder, d))])
     
     true_negative = 0
@@ -200,7 +200,7 @@ def compare4(threshold):
 
 
 def move():
-    src_folder = "/Users/odms/Documents/aditya_ws/Photos"
+    src_folder = "/home/sr/Photos"
     photo_dirs = sorted([d for d in os.listdir(src_folder) if os.path.isdir(os.path.join(src_folder, d))])
 
     img_paths = []
@@ -290,7 +290,7 @@ def comp(feat1, feat2):
                 
 
 def compare_video_detailed(video_path, threshold=0.44, output_path="output_video.mp4"):
-    src_folder = "/Users/odms/Documents/aditya_ws/Photos"
+    src_folder = "/home/sr/Photos"
 
     # Load embeddings DB
     img_paths, person_ids, all_feats = [], [], []
@@ -447,7 +447,7 @@ def compare_video_detailed(video_path, threshold=0.44, output_path="output_video
 
 
 def compare_video_live_display(video_path, threshold=0.44, output_path="output_video.mp4"):
-    src_folder = "/Users/odms/Documents/aditya_ws/Photos"
+    src_folder = "/home/sr/Photos"
 
     # Load embeddings DB
     img_paths = []
@@ -589,8 +589,8 @@ def compare_video_live_display(video_path, threshold=0.44, output_path="output_v
 if __name__ == '__main__':
     import time as time
     st = time.time()
-    # compare_video('/Users/odms/Documents/aditya_ws/fr_code/classroom.gif', threshold=0.45)
+    # compare_video('videos/input/classroom.gif', threshold=0.45)
     # compare_video_detailed('videos/input/39837-424360872_small.mp4', threshold=0.4, output_path='videos/output/ov/39837-424360872_small_04_gpu_npu_no_blur_both_fp16.mp4')
     compare_video_detailed('videos/input/BLR_Station.mp4', threshold=0.5, output_path='videos/output/ov/BLR_Station_04_gpu_npu_no_blur_both_fp16.mp4')
-    # compare_video_live_display('/Users/odms/Documents/aditya_ws/fr_code/videos/input/39837-424360872_small.mp4', threshold=0.45, output_path='/Users/odms/Documents/aditya_ws/fr_code/videos/output/output_video_walking_with_match_live_1920-1080_45.mp4')
+    # compare_video_live_display('videos/input/39837-424360872_small.mp4', threshold=0.45, output_path='videos/output/output_video_walking_with_match_live_1920-1080_45.mp4')
     print(f"Time taken: {time.time() - st} seconds")
